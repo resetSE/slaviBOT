@@ -62,6 +62,19 @@ async def zdraveite(ctx):
     voice.play(discord.FFmpegPCMAudio("slavi.mp3"))
 
 @client.command(pass_context=True)
+async def slavisus(ctx):
+    global voice
+    channel = ctx.message.author.voice.channel
+    voice = get(client.voice_clients)
+    if voice and voice.is_connected():
+        await voice.move_to(channel)
+    else:
+        voice = await channel.connect()
+    
+    await ctx.send(f"zdraveite '{channel}'")
+    voice.play(discord.FFmpegPCMAudio("slavisus.mp3"))
+
+@client.command(pass_context=True)
 async def chao(ctx):
     global voice
     channel = ctx.message.author.voice.channel
@@ -75,4 +88,4 @@ async def chao(ctx):
         print("ne sum vuv voicechannel retard")
         await ctx.send("ne sum vuv voice channel retard")
 
-client.run('YOUR-TOKEN-HERE')
+client.run('URMOMGAE')
