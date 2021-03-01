@@ -24,6 +24,9 @@ async def slavipomosht(ctx):
     embedVar = Embed(title="Zdraveite priqteli", description="dnes shte obqvqvame drug voinata vurhu cvetnokojite", color=0xe0cd88)
     embedVar.add_field(name="#slavi", value="tova sum az", inline=False)
     embedVar.add_field(name="#bonus", value="poluchavate malko bonusche ot men =)", inline=False)
+    embedVar.add_field(name="#zdravei", value="shte doida da vi kaja zdrasti", inline=False)
+    embedVar.add_field(name="#chao", value="shte vi kaja chao", inline=False)
+    embedVar.add_field(name="#top10", value="shte doida da vi kaja novata si klasaciq", inline=False)
     await ctx.send(embed=embedVar)
 
 @client.command()
@@ -62,6 +65,19 @@ async def zdraveite(ctx):
     voice.play(discord.FFmpegPCMAudio("slavi.mp3"))
 
 @client.command(pass_context=True)
+async def top10(ctx):
+    global voice
+    channel = ctx.message.author.voice.channel
+    voice = get(client.voice_clients)
+    if voice and voice.is_connected():
+        await voice.move_to(channel)
+    else:
+        voice = await channel.connect()
+    
+    await ctx.send(f"'{channel}', dobre doshli v novata mi klasaciq")
+    voice.play(discord.FFmpegPCMAudio("deca.mp3"))
+
+@client.command(pass_context=True)
 async def chao(ctx):
     global voice
     channel = ctx.message.author.voice.channel
@@ -75,4 +91,4 @@ async def chao(ctx):
         print("ne sum vuv voicechannel retard")
         await ctx.send("ne sum vuv voice channel retard")
 
-client.run('YOUR-TOKEN-HERE')
+client.run('YOUR-TOKEN')
