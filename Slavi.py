@@ -75,4 +75,4 @@ async def chao(ctx):
         print("ne sum vuv voicechannel retard")
         await ctx.send("ne sum vuv voice channel retard")
 
-client.run('ODE1NzEwMjIwNTQ1Njg3NjMy.YDwXVw.3RV5zUuRkYjxdf3Wt2v0hV0nV6c')
+client.run('YOUR-TOKEN-HERE')
