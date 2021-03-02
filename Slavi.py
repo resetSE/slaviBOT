@@ -24,7 +24,7 @@ async def slavipomosht(ctx):
     embedVar = Embed(title="Zdraveite priqteli", description="dnes shte obqvqvame drug voinata vurhu cvetnokojite", color=0xe0cd88)
     embedVar.add_field(name="#slavi", value="tova sum az", inline=False)
     embedVar.add_field(name="#bonus", value="poluchavate malko bonusche ot men =)", inline=False)
-    embedVar.add_field(name="#zdravei", value="shte doida da vi kaja zdrasti", inline=False)
+    embedVar.add_field(name="#zdraveite", value="shte doida da vi kaja zdrasti", inline=False)
     embedVar.add_field(name="#chao", value="shte vi kaja chao", inline=False)
     embedVar.add_field(name="#top10", value="shte doida da vi kaja novata si klasaciq", inline=False)
     embedVar.add_field(name="#slavising", value="pozdrav ot nashta masa za vashta masa", inline=False)
@@ -105,4 +105,4 @@ async def slavising(ctx):
     await ctx.send(f"pozdrav za vas '{channel}'")
     voice.play(discord.FFmpegPCMAudio("slavichalgar.mp3"))
 
-client.run('YOUR-TOKEN')
+client.run('YOUR-TOKEN-HERE')
