@@ -24,6 +24,10 @@ async def slavipomosht(ctx):
     embedVar = Embed(title="Zdraveite priqteli", description="dnes shte obqvqvame drug voinata vurhu cvetnokojite", color=0xe0cd88)
     embedVar.add_field(name="#slavi", value="tova sum az", inline=False)
     embedVar.add_field(name="#bonus", value="poluchavate malko bonusche ot men =)", inline=False)
+    embedVar.add_field(name="#zdraveite", value="pozdravi ot dobrich =)", inline=False)
+    embedVar.add_field(name="#chao", value="dovijdane ot petrich", inline=False)
+    embedVar.add_field(name="#top10", value="tova e moqta top 10 klasaciq za ...", inline=False)
+    embedVar.add_field(name="#slavising", value="pozdrav ot nashta masa za vashta masa", inline=False)
     await ctx.send(embed=embedVar)
 
 @client.command()
@@ -37,7 +41,7 @@ async def bonus(ctx):
 async def slavi(ctx):
     db = sqlite3.connect("slavi.sqlite")
     cur = db.cursor()
-    i = random.randint(1, 43)
+    i = random.randint(1, 80)
     i = str(i)
     cur.execute(f"SELECT slavi.url FROM slavi WHERE slavi._id = {i}")
     snimka = cur.fetchall()
@@ -59,26 +63,41 @@ async def zdraveite(ctx):
         voice = await channel.connect()
     
     await ctx.send(f"zdraveite '{channel}'")
+    voice.stop()
     voice.play(discord.FFmpegPCMAudio("slavi.mp3"))
 
 @client.command(pass_context=True)
-async def slavisus(ctx):
+async def top10(ctx):
     global voice
     channel = ctx.message.author.voice.channel
     voice = get(client.voice_clients)
     if voice and voice.is_connected():
         await voice.move_to(channel)
     else:
-        voice = await channel.connect()
-    
+        voice = await channel.connect()  
     await ctx.send(f"zdraveite '{channel}'")
+    voice.stop()
     voice.play(discord.FFmpegPCMAudio("slavisus.mp3"))
-
+    
+@client.command(pass_context=True)
+async def slavising(ctx):
+    global voice
+    channel = ctx.message.author.voice.channel
+    voice = get(client.voice_clients)
+    if voice and voice.is_connected():
+        await voice.move_to(channel)
+    else:
+        voice = await channel.connect()   
+    await ctx.send(f"zdraveite '{channel}'")
+    voice.stop()
+    voice.play(discord.FFmpegPCMAudio("slavichalgar.mp3"))
+    
 @client.command(pass_context=True)
 async def chao(ctx):
     global voice
     channel = ctx.message.author.voice.channel
     voice = get(client.voice_clients)
+    voice.stop()
     voice.play(discord.FFmpegPCMAudio("chao.mp3"))
     await asyncio.sleep(2)
     if voice and voice.is_connected():
@@ -88,4 +107,4 @@ async def chao(ctx):
         print("ne sum vuv voicechannel retard")
         await ctx.send("ne sum vuv voice channel retard")
 
-client.run('URMOMstr8')
+client.run('ODE1NzEwMjIwNTQ1Njg3NjMy.YDwXVw._tbLnPWQtpjrvxv67r2WGmlmMWg')
