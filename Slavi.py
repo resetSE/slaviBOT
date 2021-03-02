@@ -28,6 +28,7 @@ async def slavipomosht(ctx):
     embedVar.add_field(name="#chao", value="shte vi kaja chao", inline=False)
     embedVar.add_field(name="#top10", value="shte doida da vi kaja novata si klasaciq", inline=False)
     embedVar.add_field(name="#slavising", value="pozdrav ot nashta masa za vashta masa", inline=False)
+    embedVar.add_field(name="Za poveche informaciq ni potursete na", value="08878 maikata na rosen", inline=False)
     await ctx.send(embed=embedVar)
 
 @client.command()
