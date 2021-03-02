@@ -42,7 +42,7 @@ async def bonus(ctx):
 async def slavi(ctx):
     db = sqlite3.connect("slavi.sqlite")
     cur = db.cursor()
-    i = random.randint(1, 43)
+    i = random.randint(1, 80)
     i = str(i)
     cur.execute(f"SELECT slavi.url FROM slavi WHERE slavi._id = {i}")
     snimka = cur.fetchall()
