@@ -135,4 +135,17 @@ async def slavising(ctx):
     await ctx.send(f"pozdrav za vas '{channel}'")
     voice.play(discord.FFmpegPCMAudio("slavichalgar.mp3"))
 
-client.run('ODE1NzEwMjIwNTQ1Njg3NjMy.YDwXVw._tbLnPWQtpjrvxv67r2WGmlmMWg')
+@client.command(pass_context=True)
+async def slavipromo(ctx):
+    global voice
+    channel = ctx.message.author.voice.channel
+    voice = get(client.voice_clients)
+    if voice and voice.is_connected():
+        await voice.move_to(channel)
+    else:
+        voice = await channel.connect()
+    await ctx.send(f"kupete mojta nova slavi knigga '{channel}'")
+    voice.stop()
+    voice.play(discord.FFmpegPCMAudio("SlaviPromo.mp3"))
+
+client.run('ODE1NzEwMjIwNTQ1Njg3NjMy.YDwXVw.U-vFyknNmY6KlK9Le3C-MEzo_aA')
