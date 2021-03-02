@@ -27,6 +27,7 @@ async def slavipomosht(ctx):
     embedVar.add_field(name="#zdravei", value="shte doida da vi kaja zdrasti", inline=False)
     embedVar.add_field(name="#chao", value="shte vi kaja chao", inline=False)
     embedVar.add_field(name="#top10", value="shte doida da vi kaja novata si klasaciq", inline=False)
+    embedVar.add_field(name="#slavising", value="pozdrav ot nashta masa za vashta masa", inline=False)
     await ctx.send(embed=embedVar)
 
 @client.command()
@@ -90,5 +91,17 @@ async def chao(ctx):
     else:
         print("ne sum vuv voicechannel retard")
         await ctx.send("ne sum vuv voice channel retard")
+@client.command(pass_context=True)
+async def slavising(ctx):
+    global voice
+    channel = ctx.message.author.voice.channel
+    voice = get(client.voice_clients)
+    if voice and voice.is_connected():
+        await voice.move_to(channel)
+    else:
+        voice = await channel.connect()
+    
+    await ctx.send(f"pozdrav za vas '{channel}'")
+    voice.play(discord.FFmpegPCMAudio("slavichalgar.mp3"))
 
 client.run('YOUR-TOKEN')
